@@ -1,5 +1,5 @@
 {
-  "name": "sessions",
+  "name": "rijs.sessions",
   "version": "0.0.0",
   "main": "dist",
   "browser": "./node_modules/utilise/identity.js",
