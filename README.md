@@ -1,6 +1,6 @@
 # Ripple | Sessions
-[![Coverage Status](https://coveralls.io/repos/rijs/Sessions/badge.svg?branch=master&service=github)](https://coveralls.io/github/rijs/Sessions?branch=master)
-[![Build Status](https://travis-ci.org/rijs/Sessions.svg)](https://travis-ci.org/rijs/Sessions)
+[![Coverage Status](https://coveralls.io/repos/rijs/sessions/badge.svg?branch=master&service=github)](https://coveralls.io/github/rijs/sessions?branch=master)
+[![Build Status](https://travis-ci.org/rijs/sessions.svg)](https://travis-ci.org/rijs/sessions)
 
 Adds a uniquely identifying `sessionID` to each socket.
 
