@@ -1,7 +1,7 @@
 // -------------------------------------------
 // Populates sessionID on each connection
 // -------------------------------------------
-export default function sessions(ripple, { secret, name }){
+export default function sessions(ripple, { secret, name } = {}){
   log('creating')
   if (client) return identity
   if (!secret || !name) return identity

@@ -8,7 +8,9 @@ var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["defau
 // -------------------------------------------
 module.exports = sessions;
 
-function sessions(ripple, _ref) {
+function sessions(ripple) {
+  var _ref = arguments[1] === undefined ? {} : arguments[1];
+
   var secret = _ref.secret;
   var name = _ref.name;
 
