@@ -9,10 +9,6 @@ var _cookieParser = require('cookie-parser');
 
 var _cookieParser2 = _interopRequireDefault(_cookieParser);
 
-var _identity = require('utilise/identity');
-
-var _identity2 = _interopRequireDefault(_identity);
-
 var _client = require('utilise/client');
 
 var _client2 = _interopRequireDefault(_client);
@@ -38,19 +34,20 @@ function sessions(ripple) {
   var name = _ref.name;
 
   log('creating');
-  if (!secret || !name) return _identity2.default;
+  if (!secret || !name) return ripple;
   ripple.io.use(auth(secret, name));
   return ripple;
 }
 
-var log = require('utilise/log')('[ri/sessions]');
-
-function auth(secret, name) {
+var log = require('utilise/log')('[ri/sessions]'),
+    auth = function auth(secret, name) {
   return function (socket, next) {
     var req = {};
     (0, _key2.default)('headers.cookie', socket.request.headers.cookie)(req);
+    console.log("req", req);
     (0, _cookieParser2.default)(secret)(req, null, _noop2.default);
+    console.log("req", req);
     socket.sessionID = req.signedCookies[name] || req.cookies[name];
     next();
   };
-}
+};
