@@ -44,9 +44,7 @@ var log = require('utilise/log')('[ri/sessions]'),
   return function (socket, next) {
     var req = {};
     (0, _key2.default)('headers.cookie', socket.request.headers.cookie)(req);
-    console.log("req", req);
     (0, _cookieParser2.default)(secret)(req, null, _noop2.default);
-    console.log("req", req);
     socket.sessionID = req.signedCookies[name] || req.cookies[name];
     next();
   };
