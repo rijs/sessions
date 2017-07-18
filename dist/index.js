@@ -30,10 +30,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function sessions(ripple) {
   var _ref = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
-  var secret = _ref.secret;
-  var name = _ref.name;
+  var _ref$session = _ref.session;
+  var session = _ref$session === undefined ? {} : _ref$session;
 
   log('creating');
+  var secret = session.secret;
+  var name = session.name;
+
   if (!secret || !name) return ripple;
   ripple.io.use(auth(secret, name));
   return ripple;
