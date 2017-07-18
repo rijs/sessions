@@ -7,8 +7,9 @@ describe('Sessions', function(){
     expect(ripple)
       .to.be.eql(sessions(ripple))
       .to.be.eql(sessions(ripple, {}))
-      .to.be.eql(sessions(ripple, { secret: 'secret' }))
-      .to.be.eql(sessions(ripple, { name: 'name' }))
+      .to.be.eql(sessions(ripple, { session: {} }))
+      .to.be.eql(sessions(ripple, { session: { name: 'name' }}))
+      .to.be.eql(sessions(ripple, { session: { secret: 'secret' }}))
   })
 
   it('should populate sessionID', function(){  
@@ -17,7 +18,7 @@ describe('Sessions', function(){
       , socket = { request: { headers: { cookie: 'cookie' }}}
       , nextCalled
 
-    expect(sessions(ripple, { secret: 'secret', name: 'name' })).to.eql(ripple)
+    expect(sessions(ripple, { session: { secret: 'secret', name: 'name' }})).to.eql(ripple)
     expect('sessionID' in socket).to.be.ok
     expect(nextCalled).to.be.ok
   })

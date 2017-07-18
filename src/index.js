@@ -1,8 +1,9 @@
 // -------------------------------------------
 // Populates sessionID on each connection
 // -------------------------------------------
-export default function sessions(ripple, { secret, name } = {}){
+export default function sessions(ripple, { session = {} } = {}){
   log('creating')
+  const { secret, name } = session
   if (!secret || !name) return ripple
   ripple.io.use(auth(secret, name))
   return ripple
