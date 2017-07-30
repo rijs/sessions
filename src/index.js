@@ -1,7 +1,7 @@
 // -------------------------------------------
 // Populates sessionID on each connection
 // -------------------------------------------
-export default function(ripple, { session } = {}){
+module.exports = function(ripple, { session } = {}){
   log('creating')
   if (!session) return ripple
   ripple.server.express
@@ -12,12 +12,12 @@ export default function(ripple, { session } = {}){
   return ripple
 }
 
-import sessions from 'express-session'
-import cookies from 'cookie-parser'
-import client from 'utilise/client'
-import noop from 'utilise/noop'
-import key from 'utilise/key'
-const log = require('utilise/log')('[ri/sessions]')
+const sessions = require('express-session')
+    , cookies = require('cookie-parser')
+    , client = require('utilise/client')
+    , noop = require('utilise/noop')
+    , key = require('utilise/key')
+    , log = require('utilise/log')('[ri/sessions]')
     , auth = ({ secret, name }) => (socket, next) => {
         const req = {}
         key('headers.cookie', socket.request.headers.cookie)(req)
