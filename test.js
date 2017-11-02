@@ -1,9 +1,10 @@
-var sessions = require('./').default
-  , expect   = require('chai').expect
+const sessions   = require('./')
+    , { expect } = require('chai')
   
 describe('Sessions', function(){
   it('should skip if no cookie details provided', function(){  
     var ripple = {}
+
     expect(ripple)
       .to.be.eql(sessions(ripple))
       .to.be.eql(sessions(ripple, {}))
@@ -13,13 +14,15 @@ describe('Sessions', function(){
   })
 
   it('should populate sessionID', function(){  
-    var ripple = { io: { use: function(fn){ fn(socket, next) }}}
-      , next = function(){ nextCalled = true }
-      , socket = { request: { headers: { cookie: 'cookie' }}}
-      , nextCalled
+    var use = () => ({ use })
+      , ripple = { server: { 
+          express: { use }
+        , ws: { on: function(type, fn){ fn(socket) }}}
+        }
+      , session = { secret: 'secret', name: 'foo', saveUninitialized: true, resave: true }
+      , socket = { upgradeReq: { headers: { cookie: 'foo=bar' }}}
 
-    expect(sessions(ripple, { session: { secret: 'secret', name: 'name' }})).to.eql(ripple)
-    expect('sessionID' in socket).to.be.ok
-    expect(nextCalled).to.be.ok
+    expect(sessions(ripple, { session })).to.eql(ripple)
+    expect(socket.sessionID).to.be.eql('bar')
   })
 })
