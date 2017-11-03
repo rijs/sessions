@@ -1,6 +1,6 @@
 {
   "name": "rijs.sessions",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index",
   "browser": "./node_modules/utilise/identity.js",
   "author": "Pedram Emrouznejad (https://github.com/pemrouz)",
@@ -11,7 +11,7 @@
   "scripts": {
     "test": "istanbul test ./node_modules/mocha/bin/_mocha --report html -- -R spec",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && rm -rf ./coverage",
-    "version": "npm run build && git add -A",
+    "version": "git add -A",
     "postversion": "git push && git push --tags"
   },
   "license": "pemrouz.mit-license.org",
