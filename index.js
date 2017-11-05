@@ -8,6 +8,7 @@ module.exports = function(ripple, { session } = {}){
   ripple.server.express
     .use(cookies(session.secret))
     .use(sessions(session))
+
   ripple.server.ws
     .on('connection', auth(session))
   return ripple
@@ -23,6 +24,5 @@ const sessions = require('express-session')
         const req = {}
         key('headers.cookie', socket.upgradeReq.headers.cookie)(req)
         cookies(secret)(req, null, noop)
-        console.log("req", secret, name, req)
         socket.sessionID = req.signedCookies[name] || req.cookies[name]
       }
